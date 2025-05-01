@@ -20,7 +20,7 @@
 {@render children?.()}
 
 <footer
-  class="footer footer-center fixed bottom-0 bg-base-300 p-4 text-base-content"
+  class="footer-center fixed bottom-0 footer footer-horizontal bg-base-300 p-4 text-base-content"
 >
   <aside>
     <div class="flex w-full max-w-lg flex-row">
@@ -33,7 +33,7 @@
       <a
         href="https://rambhat.la"
         target="_blank"
-        class="link flex-1"
+        class="flex-1 link"
         data-umami-event="Footer AboutMe">About Me</a
       >
       <a

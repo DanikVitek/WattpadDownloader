@@ -112,17 +112,19 @@
 <div>
   <div class="hero min-h-screen">
     <div
-      class="hero-content flex-col rounded bg-base-100/50 py-32 shadow-sm lg:flex-row-reverse lg:p-16"
+      class="hero-content flex-col rounded-sm bg-base-100/50 py-32 shadow-xs lg:flex-row-reverse lg:p-16"
     >
       {#if !afterDownloadPage}
-        <div class="text-center lg:p-10 lg:text-left">
+        <div
+          class="flex flex-col items-center text-center lg:items-start lg:p-10 lg:text-left"
+        >
           <h1
-            class="bg-gradient-to-r from-red-700 via-yellow-600 to-pink-600 bg-clip-text text-5xl font-extrabold text-transparent"
+            class="bg-linear-to-r from-red-700 via-yellow-600 to-pink-600 bg-clip-text text-5xl font-extrabold text-transparent"
             >Wattpad Downloader</h1
           >
           <div
             role="alert"
-            class="alert mt-10 max-w-md break-words bg-green-200"
+            class="mt-10 alert max-w-md bg-green-200 break-words"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -141,8 +143,8 @@
               <p>
                 Donators get access to <span class="font-semibold"
                   >high-speed PDF Downloads</span
-                >
-              </p>
+                ></p
+              >
               <a href="/donate" class="link" target="_blank">Donate now</a>
             </div>
           </div>
@@ -189,11 +191,11 @@
         </div>
         <div class="card w-full max-w-sm shrink-0 bg-base-100 shadow-2xl">
           <form class="card-body">
-            <div class="form-control">
+            <fieldset class="fieldset">
               <input
                 type="text"
                 placeholder="Story URL"
-                class="input input-bordered"
+                class="input w-full"
                 class:input-warning={invalidUrl}
                 oninput={onInputUrl}
                 required
@@ -201,17 +203,17 @@
               />
               <label class="label" for="input_url">
                 {#if invalidUrl}
-                  <p class=" text-red-500">
+                  <span class="text-red-500">
                     Refer to (<button
                       class="link font-semibold"
                       onclick={() => storyURLTutorialModal.showModal()}
                       data-umami-event="Part StoryURLTutorialModal Open"
                       >How to get a Story URL</button
                     >).
-                  </p>
+                  </span>
                 {:else}
                   <button
-                    class="link label-text font-semibold"
+                    class="link text-sm font-semibold text-base-content"
                     onclick={() => storyURLTutorialModal.showModal()}
                     data-umami-event="StoryURLTutorialModal Open"
                     >How to get a Story URL</button
@@ -219,18 +221,18 @@
                 {/if}
               </label>
 
-              <label class="label cursor-pointer">
-                <span class="label-text"
+              <label class="label cursor-pointer justify-between">
+                <span class="text-sm text-base-content"
                   >This is a Paid Story, and I've purchased it</span
                 >
                 <input
                   type="checkbox"
-                  class="checkbox-warning checkbox shadow-md"
+                  class="checkbox checkbox-warning shadow-md"
                   bind:checked={isPaidStory}
                 />
               </label>
               {#if isPaidStory}
-                <label class="input input-bordered flex items-center gap-2">
+                <label class="input flex w-full items-center gap-2">
                   Username
                   <input
                     type="text"
@@ -241,7 +243,7 @@
                     required
                   />
                 </label>
-                <label class="input input-bordered flex items-center gap-2">
+                <label class="input flex w-full items-center gap-2">
                   Password
                   <input
                     type="password"
@@ -253,9 +255,9 @@
                   />
                 </label>
               {/if}
-            </div>
+            </fieldset>
 
-            <div class="form-control mt-6">
+            <fieldset class="mt-6 fieldset">
               <a
                 class="btn rounded-l-none"
                 class:btn-primary={!downloadAsPdf}
@@ -276,24 +278,24 @@
                 </div>
               </label> -->
 
-              <label class="label cursor-pointer">
-                <span class="label-text"
+              <label class="label cursor-pointer justify-between">
+                <span class="text-sm text-base-content"
                   >Include Images (<strong>Slower Download</strong>)</span
                 >
                 <input
                   type="checkbox"
-                  class="checkbox-warning checkbox shadow-md"
+                  class="checkbox checkbox-warning shadow-md"
                   bind:checked={downloadImages}
                 />
               </label>
-            </div>
+            </fieldset>
           </form>
         </div>
       {:else}
         <div class="max-w-4xl text-center">
           <h1 class="text-3xl font-bold">
             Your download has <span
-              class="bg-gradient-to-r from-red-700 via-yellow-600 to-pink-600 bg-clip-text text-transparent"
+              class="bg-linear-to-r from-red-700 via-yellow-600 to-pink-600 bg-clip-text text-transparent"
               >Started</span
             >
           </h1>
@@ -319,7 +321,7 @@
             <a
               href="/donate"
               target="_blank"
-              class="btn btn-lg mt-10 bg-cyan-200 hover:bg-green-200"
+              class="btn mt-10 bg-cyan-200 btn-lg hover:bg-green-200"
               >Buy me a Coffee! 🍵</a
             >
             <button
@@ -336,10 +338,13 @@
   </div>
 </div>
 
-<dialog class="modal" bind:this={storyURLTutorialModal}>
+<dialog
+  class="modal motion-reduce:transition-none"
+  bind:this={storyURLTutorialModal}
+>
   <div class="modal-box">
     <form method="dialog">
-      <button class="btn btn-circle btn-ghost btn-sm absolute right-2 top-2"
+      <button class="btn absolute top-2 right-2 btn-circle btn-ghost btn-sm"
         >✕</button
       >
     </form>
@@ -351,7 +356,7 @@
       <li>
         For example,
         <span class="bg-slate-100 p-1 font-mono"
-          >wattpad.com/<span class="rounded-sm bg-amber-200">story</span
+          >wattpad.com/<span class="rounded-xs bg-amber-200">story</span
           >/237369078-wattpad-books-presents</span
         >.
       </li>
