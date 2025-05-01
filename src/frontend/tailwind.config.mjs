@@ -1,8 +1,8 @@
-const daisyui = require("daisyui");
-const typography = require("@tailwindcss/typography");
+import daisyui from "daisyui";
+import typography from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config}*/
-const config = {
+export default {
   content: ["./src/**/*.{html,js,svelte,ts}"],
 
   theme: {
@@ -15,5 +15,3 @@ const config = {
     themes: ["bumblebee"],
   },
 };
-
-module.exports = config;
