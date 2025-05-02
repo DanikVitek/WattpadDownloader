@@ -11,4 +11,7 @@ export default {
   },
 
   preprocess: vitePreprocess(),
+  vitePlugin: {
+    inspector: true,
+  }
 };
